@@ -1,0 +1,55 @@
+<html>
+  <div class="form-group row ">
+    <label class="col-md-3 form-control-label">    RFC  </label>
+    <div class="col-md-6">  <input class="form-control" name="siret" type="text" value="" autocomplete="nope"  maxlength="13" minlength="12" oninput="validarInput(this)">  
+      <span class="form-control-comment" id="resultado">   </span> 
+    </div> 
+    <div class="col-md-3 form-control-comment">  </div>
+  </div>
+
+   
+<style type="text/css">#resultado { color: red;
+    font-weight: bold;
+}
+#resultado.ok {
+   color: green;font-weight: bold;
+}</style>
+
+
+
+
+
+<script>
+    /** VALIDAR RFC**/
+function rfcValido(rfc, aceptarGenerico = true) {
+     _rfc_pattern_pm = "^(([A-ZÑ&]{3})([0-9]{2})([0][13578]|[1][02])(([0][1-9]|[12][\\d])|[3][01])([A-Z0-9]{3}))|" +
+              "(([A-ZÑ&]{3})([0-9]{2})([0][13456789]|[1][012])(([0][1-9]|[12][\\d])|[3][0])([A-Z0-9]{3}))|" +
+              "(([A-ZÑ&]{3})([02468][048]|[13579][26])[0][2]([0][1-9]|[12][\\d])([A-Z0-9]{3}))|" +
+              "(([A-ZÑ&]{3})([0-9]{2})[0][2]([0][1-9]|[1][0-9]|[2][0-8])([A-Z0-9]{3}))$";
+ _rfc_pattern_pf = "^(([A-ZÑ&]{4})([0-9]{2})([0][13578]|[1][02])(([0][1-9]|[12][\\d])|[3][01])([A-Z0-9]{3}))|" +
+                   "(([A-ZÑ&]{4})([0-9]{2})([0][13456789]|[1][012])(([0][1-9]|[12][\\d])|[3][0])([A-Z0-9]{3}))|" +
+                   "(([A-ZÑ&]{4})([02468][048]|[13579][26])[0][2]([0][1-9]|[12][\\d])([A-Z0-9]{3}))|" +
+                   "(([A-ZÑ&]{4})([0-9]{2})[0][2]([0][1-9]|[1][0-9]|[2][0-8])([A-Z0-9]{3}))$";
+   return rfc.match(_rfc_pattern_pm) || rfc.match(_rfc_pattern_pf);
+}
+
+ 
+
+function validarInput(input) {
+    var rfc         = input.value.trim().toUpperCase(),
+        resultado   = document.getElementById("resultado"),
+        valido; 
+    var rfcCorrecto = rfcValido(rfc);  
+  
+    if (rfcCorrecto) {
+        valido = "Válido";
+      resultado.classList.add("ok");
+    } else {
+        valido = "No válido"
+        resultado.classList.remove("ok");
+    } 
+    resultado.innerText = "Formato de RFC: " + valido;
+}
+
+</script>
+</html>

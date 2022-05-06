@@ -1,0 +1,32 @@
+
+<html>
+  <div class="form-group row ">
+    <label class="col-md-3 form-control-label">  C.P Dir. Fiscal </label>
+    <div class="col-md-6">  <input class="form-control" name="copy_cp" type="text" value="" placeholder="5 dígitos" autocomplete="nope" maxlength="5" minlength="5" pattern="[0-9]+" onkeypress="return valideKey(event);"> </div> 
+    <div class="col-md-3 form-control-comment">   </div>
+  </div>
+
+</html>
+
+
+
+
+ 
+
+
+<script>
+  <!--  ## VALIDACION, SOLO NUMEROS  -->
+       <script type="text/javascript">
+        function valideKey(evt){
+ 
+          var code = (evt.which) ? evt.which : evt.keyCode;
+          
+          if(code==8) {  
+            return true;
+          } else if(code>=48 && code<=57) {  
+            return true;
+          } else{ // other keys.
+            return false;
+          }
+        }
+</script>
